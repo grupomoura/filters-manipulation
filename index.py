@@ -24,12 +24,11 @@ def main():
 	print('10. Median Filter')
 	print('11. Show image at YIQ')
 	print('')
-	option = input()
-	filename = askopenfilename()
+	option = input('Enter option: ')
+	#filename = askopenfilename()
 
 	if option == "1":
-		print('Enter a measurement between 0 and 255:')
-		measure = input()
+		measure = input('Enter a measurement between 0 and 255: ')
 		print('Choose image type:')
 		print('1. Monochromatic')
 		print('2. Colorful')
@@ -77,14 +76,14 @@ def main():
 		ft.brightness_handler(filename, measure, 'multiply')
 	
 	elif option == "8":
-		mask = askopenfilename()
+		mask = 'assets\\masks\\kernel-mask.txt'
 		conv.kernel_filter(filename, mask)
 	elif option == "9":
-		mask = askopenfilename()
+		mask = 'assets\\masks\\sobel-mask.txt'
 		conv.sobel_filter(filename, mask)
 		# conv.sobel_filter('assets/images/CNN1.png', 'assets/masks/sobel-mask.txt')
 	elif option == "10":
-		mask = askopenfilename()
+		mask = 'assets\\masks\\mask5x5.txt'
 		conv.median_filter(filename, mask)
 		# conv.median_filter('assets/images/2817540617.jpg', 'assets/masks/mask5x5.txt')
 		# conv.median_filter('assets/images/lena.png', 'assets/masks/mask5x5.txt')
@@ -93,6 +92,7 @@ def main():
 	else:
 		print('Closed!')
 
-
 if __name__ == '__main__':
-	main()
+	while True:
+		filename = "D:/Melanoma_tips/Skin cancer ISIC The International Skin Imaging Collaboration/Train/actinic keratosis/ISIC_0026171.jpg"
+		main()

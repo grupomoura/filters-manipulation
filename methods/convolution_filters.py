@@ -30,12 +30,12 @@ def kernel_filter(path, mask_path):
 	kernel_image = cv.merge([r_matrix, g_matrix, b_matrix])
 	hp.show_image('Kernel Filter', kernel_image)
 
-	np.savetxt("./assets/files/red_extended_matrix.txt", r_ext, fmt="%s")
+	"""np.savetxt("./assets/files/red_extended_matrix.txt", r_ext, fmt="%s")
 	np.savetxt("./assets/files/green_extended_matrix.txt", g_ext, fmt="%s")
 	np.savetxt("./assets/files/blue_extended_matrix.txt", b_ext, fmt="%s")
 	np.savetxt("./assets/files/red_final_matrix.txt", r_matrix, fmt="%s")
 	np.savetxt("./assets/files/green_final_matrix.txt", g_matrix, fmt="%s")
-	np.savetxt("./assets/files/blue_final_matrix.txt", b_matrix, fmt="%s")
+	np.savetxt("./assets/files/blue_final_matrix.txt", b_matrix, fmt="%s")"""
 
 
 def median_filter(path, mask):
@@ -98,3 +98,4 @@ def sobel_filter(path, mask):
 			
 	sobel_image = cv.merge([r_matrix, g_matrix, b_matrix])
 	hp.show_image('Sobel Filter', sobel_image)
+
