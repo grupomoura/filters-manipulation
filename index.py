@@ -94,5 +94,5 @@ def main():
 
 if __name__ == '__main__':
 	while True:
-		filename = "D:/Melanoma_tips/Skin cancer ISIC The International Skin Imaging Collaboration/Train/actinic keratosis/ISIC_0026171.jpg"
+		filename = "D:/GDrive/Programcao/Bionder_Github/20160706091724.jpg"
 		main()

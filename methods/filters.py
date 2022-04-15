@@ -7,31 +7,33 @@ def show_rgb(path, band):
 	img = cv.imread(path, 3)
 	blue, green, red = cv.split(img)
 
-	if band == 'blue':
+	if band == 'red':
+		blue = hp.clear_matrix(blue)
 		green = hp.clear_matrix(green)
-		red = hp.clear_matrix(red)
-		imgBlue = cv.merge([red, green, blue])
-		hp.show_image('Blue', np.hstack([img, imgBlue]))
+		"""green = hp.clear_matrix(green)
+		red = hp.clear_matrix(red)"""
+		imgColor = cv.merge([red, green, blue])
+		hp.show_image('red', np.hstack([img, imgColor]))
 	elif band == 'green':
 		blue = hp.clear_matrix(blue)
 		red = hp.clear_matrix(red)
-		imgGreen = cv.merge([red, green, blue])
-		hp.show_image('Green', np.hstack([img, imgGreen]))
-	elif band == 'red':
+		imgColor = cv.merge([red, green, blue])
+		hp.show_image('Green', np.hstack([img, imgColor]))
+	elif band == 'blue':
 		blue = hp.clear_matrix(blue)
 		green = hp.clear_matrix(green)
-		imgRed = cv.merge([red, green, blue])
-		hp.show_image('Red', np.hstack([img, imgRed]))
+		imgColor = cv.merge([red, green, blue])
+		hp.show_image('blue', np.hstack([img, imgColor]))
 	elif band == 'gray':
 		blue = hp.clear_matrix(blue)
 		green = hp.clear_matrix(green)
-		imgGray = cv.merge([red, red, red])
-		hp.show_image('Gray', np.hstack([img, imgGray]))
-	if input('Save image? (press 1 for save, 0 for pass: )' == 1):
-		cv.imwrite('nevo_selected.png', img)
+		imgColor = cv.merge([red, red, red])
+		hp.show_image('Gray', np.hstack([img, imgColor]))
+	if input('Save image? (press 1 for save, 0 for pass): ') == "1":
+		cv.imwrite(f'nevo_{band}.png', imgColor)
 
 def show_yiq(path):
-	img, y, i, q = convert_to_yiq(path)
+	y, i, q = convert_to_yiq(path)
 	yiq_matrix = cv.merge([y, i, q])
 	cv.imshow('YIQ IMAGE',  yiq_matrix)
 	cv.waitKey(0)
@@ -83,6 +85,7 @@ def rgb_yiq_rgb(path):
 
 
 def negative(path, option):
+	import copy
 	img = cv.imread(path, 3)
 	row, col, ch = img.shape
 
@@ -170,7 +173,7 @@ def brightness_handler(path, measure, option):
 
 	brightnessImage = cv.merge([r_matrix, g_matrix, b_matrix])
 	hp.show_image('Brightness Image', np.hstack([img, brightnessImage]))
-
+	cv.imwrite('30x100.png', brightnessImage)
 
 def thresholding(path, measure, option):
 	if option == "1":
@@ -222,7 +225,7 @@ def thresholding_y(path, choose, measure):
 				else:
 					y_matrix[i, j] = 255
 		threY = cv.merge([y_matrix, i_matrix, q_matrix])
-		cv.imshow('Thresholding Y measure', np.hstack([img, threY]))
+		cv.imshow('Thresholding Y measure', threY)
 		cv.waitKey(0)
 		cv.destroyAllWindows()
 	else:
@@ -238,7 +241,7 @@ def thresholding_y(path, choose, measure):
 				else:
 					y_matrix[i, j] = 255
 		threY = cv.merge([y_matrix, i_matrix, q_matrix])
-		cv.imshow('Thresholding Y average', np.hstack([img, threY]))
+		cv.imshow('Thresholding Y average', threY)
 		cv.waitKey(0)
 		cv.destroyAllWindows()
 
@@ -248,3 +251,5 @@ if input('Save image? (press 1 for save, 0 for pass: ): ') == '1':
 	print('Image saved!')
 	cv.imwrite('nevo_selected.png', negativeImage)
 """
+
+#https://medium.com/@thiagoluiz.nunes/relat%C3%B3rio-sobre-o-processamento-digital-de-imagens-utilizando-python-c7936143d940
