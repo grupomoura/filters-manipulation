@@ -39,8 +39,7 @@ def main():
 		print('2. Average')
 		choose = input()
 		if choose == '1':
-			print('Enter a measurement between 0 and 255:')
-			measure = input()
+			measure = input('Enter a measurement between 0 and 255: ')
 			ft.thresholding_y(filename, choose, measure)
 		else:
 			ft.thresholding_y(filename, choose, 'measure')
@@ -67,12 +66,10 @@ def main():
 		measure = input()
 		ft.negative(filename, measure)
 	elif option == "6":
-		print('Enter a incriese measurement:')
-		measure = input()
+		measure = input('Enter a incriese measurement: ')
 		ft.brightness_handler(filename, measure, 'add')
 	elif option == "7":
-		print('Enter a multiply measurement:')
-		measure = input()
+		measure = input('Enter a multiply measurement: ')
 		ft.brightness_handler(filename, measure, 'multiply')
 	
 	elif option == "8":
@@ -94,5 +91,5 @@ def main():
 
 if __name__ == '__main__':
 	while True:
-		filename = "D:/GDrive/Programcao/Bionder_Github/20160706091724.jpg"
+		filename = "tmponst7huy.PNG.png"
 		main()
